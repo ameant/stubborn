@@ -1,19 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        <link rel="stylesheet" href="/build/app.css">
+        
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
+    </head>
+
+    <body>
+        <header>
+            <nav class="navbar primary">
+                <div>
+                    <a href="{{ path('app_home') }}" class="navbar-brand">Stubborn</a>
+                    <p class="slogan">Don't compromise on your look</p>
+                </div>
+                <div class="navbar-menu ml-auto">
+                    <a class="navbar-link" href="{{ path('app_home') }}">Accueil</a>
+                    <a class="navbar-link" href="{{ path('app_register') }}">S'inscrire</a>
+                    <a class="navbar-link" href="{{ path('app_login') }}">Se connecter</a>
+                </div>
+            </nav>
+        </header>
+        
+        <main>
+            {% block body %}{% endblock %}
+        </main>
+
+        <footer class="footer primary">
+            <p>
+            <b>Informations de la société</b> <br>
+            <u>Nom de la société :</u> Stubborn <br>
+            <u>Adresse :</u> Piccadilly Circus, London W1J 0DA, Royaume-Uni <br>
+            <u>Adresse de contact :</u> stubborn@blabla.com <br>
+            <u>Slogan:</u> Don't compromise on your look <br>
+            </p>
+        </footer>
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
+            <script src="/build/runtime.js"></script>
+            <script src="/build/app.js"></script>
         {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
     </body>
 </html>

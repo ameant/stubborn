@@ -2,6 +2,9 @@
 
 {% block title %}Se connecter{% endblock %}
 
+{% block stylesheets %}
+{% endblock %}
+
 {% block body %}
 {% for flash_success in app.flashes('success') %}
         <div class="alert alert-success" role="alert">{{ flash_success }}</div>
@@ -19,10 +22,10 @@
     {% endif %}
 
     <h1 class="h3 mb-3 font-weight-normal">Se connecter</h1>
-    <label for="inputUsername">Nom d'utilisateur :</label>
-    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required>
-    <label for="inputPassword">Mot de passe :</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+    <label for="inputUsername">Nom d'utilisateur :</label> <br>
+    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required> <br>
+    <label for="inputPassword">Mot de passe :</label> <br>
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required> <br>
 
 
     <input type="hidden" name="_csrf_token"
@@ -31,11 +34,11 @@
 
     <button class="btn btn-lg btn-primary" type="submit">
         Se connecter
-    </button>
+    </button> 
     <div>
     <a href="="{{ path('app_forgot_password_request')}}">Mot de passe oublié</a>
-    </div>
-    <div class="mb-3 text">Pas encore inscrit ?
+    </div> <br>
+    <div class="mb-3 text">Pas encore inscrit ? <br>
     <button onclick="window.location.href='{{ path('app_register') }}'">Créer un compte</button>
     </div>
 </form>

@@ -3,6 +3,7 @@
 {% block title %}S'inscrire{% endblock %}
 
 {% block body %}
+<section>
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
@@ -10,26 +11,26 @@
     <h1>S'inscrire</h1>
 
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.name, {
-                label: 'Nom d\'utilisateur :'
-            }) }}
-        {{ form_row(registrationForm.email, {
-            label: 'Adresse mail :'
-        }) }}
-        {{ form_row(registrationForm.delivery_address, {
-            label: 'Adresse de livraison'
-        }) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Mot de passe'
-        }) }}
-        {{ form_row(registrationForm.passwordConfirmation, {
-            label: 'Confirmer le mot de passe :'
-        }) }}
+        <label for="{{ registrationForm.name.vars.id }}">Nom d'utilisateur :</label> <br>
+        {{ form_widget(registrationForm.name) }} <br>
+        
+        <label for="{{ registrationForm.email.vars.id }}">Adresse mail :</label> <br>
+        {{ form_widget(registrationForm.email) }} <br><br>
+        
+        <label for="{{ registrationForm.delivery_address.vars.id }}">Adresse de livraison :</label> <br>
+        {{ form_widget(registrationForm.delivery_address) }} <br><br><br>
+        
+        <label for="{{ registrationForm.plainPassword.vars.id }}">Mot de passe :</label> <br>
+        {{ form_widget(registrationForm.plainPassword) }} <br>
+        
+        <label for="{{ registrationForm.passwordConfirmation.vars.id }}">Confirmer le mot de passe :</label> <br>
+        {{ form_widget(registrationForm.passwordConfirmation) }} <br>
 
-        <button type="submit" class="btn">Créer un compte</button>
+        <button type="submit" class="btn">Créer un compte</button> <br><br>
     {{ form_end(registrationForm) }}
 
-    <div class="mb-3 text">Déjà inscrit ?
+    <div class="mb-3 text">Déjà inscrit ? <br>
     <button onclick="window.location.href='{{ path('app_login') }}'">Se connecter</button>
     </div>
+</section>
 {% endblock %}

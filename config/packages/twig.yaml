@@ -1,5 +1,8 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
+    globals:
+        adminName: "Jane Doe"
+        adminEmail: "amelynea91@gmail.com"
 
 when@test:
     twig:
