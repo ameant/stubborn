@@ -18,10 +18,16 @@
                     <p class="slogan">Don't compromise on your look</p>
                 </div>
                 <div class="navbar-menu ml-auto">
-                    <a class="navbar-link" href="{{ path('app_home') }}">Accueil</a>
-                    <a class="navbar-link" href="{{ path('app_register') }}">S'inscrire</a>
-                    <a class="navbar-link" href="{{ path('app_login') }}">Se connecter</a>
-                </div>
+                    <a class="navbar-link {% if app.request.attributes.get('_route') == 'app_home' %}active{% endif %}" href="{{ path('app_home') }}">Accueil</a>
+                    {% if app.user %}
+                        <a class="navbar-link {% if app.request.attributes.get('_route') == 'app_products' %}active{% endif %}" href="{{ path('app_products') }}">Boutique</a>
+                        <a class="navbar-link {% if app.request.attributes.get('_route') == 'app_cart' %}active{% endif %}" href="{{ path('app_cart') }}">Panier</a>
+                        <a class="navbar-link {% if app.request.attributes.get('_route') == 'app_logout' %}active{% endif %}" href="{{ path('app_logout') }}">Se déconnecter</a>
+                    {% else %}
+                        <a class="navbar-link {% if app.request.attributes.get('_route') == 'app_register' %}active{% endif %}" href="{{ path('app_register') }}">S'inscrire</a>
+                        <a class="navbar-link {% if app.request.attributes.get('_route') == 'app_login' %}active{% endif %}" href="{{ path('app_login') }}">Se connecter</a>
+                    {% endif %}
+            </div>
             </nav>
         </header>
         
@@ -29,7 +35,7 @@
             {% block body %}{% endblock %}
         </main>
 
-        <footer class="footer primary">
+        <footer class="footer">
             <p>
             <b>Informations de la société</b> <br>
             <u>Nom de la société :</u> Stubborn <br>

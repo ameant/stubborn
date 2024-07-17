@@ -6,7 +6,16 @@
     padding: 60px 20px 120px;
 }
 
+.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 .highlight {
     border: 1px solid black;
     padding: 30px;
+}
+
+.home-img {
+    border: 1px solid #ccc;
 }
