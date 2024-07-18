@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Page d'accueil{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block stylesheets %}
 {% endblock %}
@@ -9,20 +9,47 @@
     <section class="home">
         <div class="highlight">
             <img class="home-img" src={{asset('images/black.jpeg')}}>
-            <p>Nom</p>
-            <p>Prix</p>
+            <div class="pdts-content">
+                <div class="pdts-description">
+                    <p>Nom: Blackbelt</p>
+                    <p>Prix: 29,90 €</p>
+                </div>
+                {% if app.user %}
+                    <div class="pdts-btn-container">
+                        <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
+                    </div>
+                {% endif %}
+            </div>
         </div>
 
         <div class="highlight">
             <img class="home-img" src={{asset('images/tricolor.jpeg')}}>
-            <p>Nom</p>
-            <p>Prix</p>
+            <div class="pdts-content">
+                <div class="pdts-description">
+                    <p>Nom: Pokeball</p>
+                    <p>Prix: 45 €</p>
+                </div>
+                {% if app.user %}
+                    <div class="pdts-btn-container">
+                        <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
+                    </div>
+                {% endif %}
+            </div>
         </div>
 
         <div class="highlight">
             <img class="home-img" src={{asset('images/us.jpeg')}}>
-            <p>Nom</p>
-            <p>Prix</p>
+            <div class="pdts-content">
+                <div class="pdts-description">
+                    <p>Nom: BornInUsa</p>
+                    <p>Prix: 59,90 €</p>
+                </div>
+                {% if app.user %}
+                    <div class="pdts-btn-container">
+                        <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
+                    </div>
+                {% endif %}
+            </div>
         </div>
     </section>
 {% endblock %}

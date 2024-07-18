@@ -5,13 +5,15 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\EqualTo;
+use Symfony\Component\Validator\Constraints\Email;
 
 class RegistrationFormType extends AbstractType
 {
@@ -19,23 +21,30 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nom d\'utilisateur',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez entrer un nom d\'utilisateur',
                     ]),
                 ],
             ])
-            ->add('email')
-            ->add('delivery_address', TextType::class, [
-                'label' => 'Adresse de livraison',
+            ->add('email', EmailType::class, [
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez entrer une adresse email',
+                    ]),
+                    new Email([
+                        'message' => 'Veuillez entrer une adresse email valide',
+                    ]),
+                ],
+            ])
+            ->add('deliveryAddress', TextType::class, [
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez entrer une adresse de livraison',
                     ]),
                 ],
             ])
-            ->add('plainPassword', PasswordType::class, [
+            ->add('password', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
@@ -52,19 +61,14 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('passwordConfirmation', PasswordType::class, [
-                'label' => 'Confirmer le mot de passe :',
-                'mapped' => false,
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Veuillez confirmer le mot de passe',
-                    ]),
-                    new EqualTo([
-                        'propertyPath' => 'plainPassword',
-                        'message' => 'Les mots de passe doivent correspondre.',
-                    ]),
-                ],
-            ])
+            ->add('password', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'invalid_message' => 'Les mots de passe doivent correspondre.',
+                'options' => ['attr' => ['class' => 'password-field']],
+                'required' => true,
+                'first_options'  => ['label' => 'Mot de passe'],
+                'second_options' => ['label' => 'Confirmer le mot de passe :'],
+            ]);
         ;
     }
 

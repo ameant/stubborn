@@ -2,19 +2,139 @@
 
 {% block title %}Produits{% endblock %}
 
+{% block stylesheets %}
+{% endblock %}
+
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <section class="pdts-section">
+        <div class="pdts">
+            <img class="pdts-img" src={{asset('images/black.jpeg')}}>
+            <div class="pdts-content">
+                <div class="pdts-description">
+                    <p>Nom: Blackbelt</p>
+                    <p>Prix: 29,90 €</p>
+                </div>
+                <div class="pdts-btn-container">
+                    <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
+                </div>
+            </div>
+        </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        <div class="pdts">
+            <img class="pdts-img" src={{asset('images/darkblue.jpeg')}}>
+            <div class="pdts-content">
+                <div class="pdts-description">
+                    <p>Nom: BlueBelt</p>
+                    <p>Prix: 29,90 €</p>
+                </div>
+                <div class="pdts-btn-container">
+                    <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
+                </div>
+            </div>
+        </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/amely/Documents/CEF/Devoirs/13 Symfony/stubborn/stubborn/src/Controller/ProductsController.php'|file_link(0) }}">src/Controller/ProductsController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/amely/Documents/CEF/Devoirs/13 Symfony/stubborn/stubborn/templates/products/index.html.twig'|file_link(0) }}">templates/products/index.html.twig</a></code></li>
-    </ul>
-</div>
+        <div class="pdts">
+            <img class="pdts-img" src={{asset('images/orange.jpeg')}}>
+            <div class="pdts-content">
+                <div class="pdts-description">
+                    <p>Nom: Street</p>
+                    <p>Prix: 34,50 €</p>
+                </div>
+                <div class="pdts-btn-container">
+                    <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="pdts">
+            <img class="pdts-img" src={{asset('images/tricolor.jpeg')}}>
+            <div class="pdts-content">
+                <div class="pdts-description">
+                    <p>Nom: Pokeball</p>
+                    <p>Prix: 45 €</p>
+                </div>
+                <div class="pdts-btn-container">
+                    <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="pdts">
+            <img class="pdts-img" src={{asset('images/pink.jpeg')}}>
+            <div class="pdts-content">
+                <div class="pdts-description">
+                    <p>Nom: PinkLady</p>
+                    <p>Prix: 29,90 €</p>
+                </div>
+                <div class="pdts-btn-container">
+                    <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="pdts">
+            <img class="pdts-img" src={{asset('images/white.jpeg')}}>
+            <div class="pdts-content">
+                <div class="pdts-description">
+                    <p>Nom: Snow</p>
+                    <p>Prix: 32 €</p>
+                </div>
+                <div class="pdts-btn-container">
+                    <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="pdts">
+            <img class="pdts-img" src={{asset('images/grey.jpeg')}}>
+            <div class="pdts-content">
+                <div class="pdts-description">
+                    <p>Nom: Greyback</p>
+                    <p>Prix: 28,50 €</p>
+                </div>
+                <div class="pdts-btn-container">
+                    <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="pdts">
+            <img class="pdts-img" src={{asset('images/blue.jpeg')}}>
+            <div class="pdts-content">
+                <div class="pdts-description">
+                    <p>Nom: BlueCloud</p>
+                    <p>Prix: 45 €</p>
+                </div>
+                <div class="pdts-btn-container">
+                    <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="pdts">
+            <img class="pdts-img" src={{asset('images/us.jpeg')}}>
+            <div class="pdts-content">
+                <div class="pdts-description">
+                    <p>Nom: BornInUsa</p>
+                    <p>Prix: 59,90€</p>
+                </div>
+                <div class="pdts-btn-container">
+                    <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="pdts">
+            <img class="pdts-img" src={{asset('images/green.jpeg')}}>
+            <div class="pdts-content">
+                <div class="pdts-description">
+                    <p>Nom: GreenSchool</p>
+                    <p>Prix: 42,20 €</p>
+                </div>
+                <div class="pdts-btn-container">
+                    <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}

@@ -7,12 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @UniqueEntity(fields={"name"}, message="Il y a déjà un compte avec ce nom d'utilisateur")
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -47,18 +46,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $delivery_address;
+    private $deliveryAddress;
 
     /**
      * @ORM\Column(type="boolean")
      */
     private $isVerified = false;
-
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Length(min=6, max=4096)
-     */
-    private $plainPassword;
 
     public function getId(): ?int
     {
@@ -84,7 +77,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->email;
+        return (string) $this->name;
     }
 
     /**
@@ -92,7 +85,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string) $this->name;
     }
 
     /**
@@ -146,7 +139,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function eraseCredentials()
     {
         // If you store any temporary, sensitive data on the user, clear it here
-        $this->plainPassword = null;
+        // $this->plainPassword = null;
     }
 
     public function getName(): ?string
@@ -163,12 +156,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getDeliveryAddress(): ?string
     {
-        return $this->delivery_address;
+        return $this->deliveryAddress;
     }
 
-    public function setDeliveryAddress(string $delivery_address): self
+    public function setDeliveryAddress(string $deliveryAddress): self
     {
-        $this->delivery_address = $delivery_address;
+        $this->deliveryAddress = $deliveryAddress;
 
         return $this;
     }
@@ -181,18 +174,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
-
-        return $this;
-    }
-
-    public function getPlainPassword(): ?string
-    {
-        return $this->plainPassword;
-    }
-
-    public function setPlainPassword(?string $plainPassword): self
-    {
-        $this->plainPassword = $plainPassword;
 
         return $this;
     }

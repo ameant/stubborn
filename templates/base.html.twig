@@ -20,6 +20,9 @@
                 <div class="navbar-menu ml-auto">
                     <a class="navbar-link {% if app.request.attributes.get('_route') == 'app_home' %}active{% endif %}" href="{{ path('app_home') }}">Accueil</a>
                     {% if app.user %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a class="navbar-link {% if app.request.attributes.get('_route') == 'app_admin' %}active{% endif %}" href="{{ path('app_products') }}">Back-Office</a>
+                        {% endif %}
                         <a class="navbar-link {% if app.request.attributes.get('_route') == 'app_products' %}active{% endif %}" href="{{ path('app_products') }}">Boutique</a>
                         <a class="navbar-link {% if app.request.attributes.get('_route') == 'app_cart' %}active{% endif %}" href="{{ path('app_cart') }}">Panier</a>
                         <a class="navbar-link {% if app.request.attributes.get('_route') == 'app_logout' %}active{% endif %}" href="{{ path('app_logout') }}">Se déconnecter</a>

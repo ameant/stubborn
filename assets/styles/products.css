@@ -1,0 +1,46 @@
+.pdts-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 60px 0px 120px;
+}
+
+.pdts {
+    flex-basis: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    padding: 15px 0px 0px;
+    margin-bottom: 20px; 
+}
+
+.pdts-content {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+}
+
+.pdts-description {
+    align-self: flex-start;
+}
+
+.pdts-btn-container {
+    align-self: flex-end;
+    justify-self: center;
+    margin-bottom: 25px;
+}
+
+.pdts-btn { 
+    padding: 5px 25px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.pdts-img {
+    border: 1px solid #ccc;
+}
