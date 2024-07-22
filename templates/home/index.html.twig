@@ -1,3 +1,5 @@
+{# templates/home/index.html.twig #}
+
 {% extends 'base.html.twig' %}
 
 {% block title %}Accueil{% endblock %}
@@ -7,49 +9,27 @@
 
 {% block body %}
     <section class="home">
-        <div class="highlight">
-            <img class="home-img" src={{asset('images/black.jpeg')}}>
-            <div class="pdts-content">
-                <div class="pdts-description">
-                    <p>Nom: Blackbelt</p>
-                    <p>Prix: 29,90 €</p>
-                </div>
-                {% if app.user %}
-                    <div class="pdts-btn-container">
-                        <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
+        {% for sweatshirt in highlightedSweatshirts %}
+            {% set imageMap = {
+                1: 'black.jpeg',
+                4: 'tricolor.jpeg',
+                9: 'us.jpeg'
+            } %}
+            {% set image = imageMap[sweatshirt.id] %}
+            <div class="highlight">
+                <img class="home-img" src="{{ asset('images/' ~ image) }}">
+                <div class="home-content">
+                    <div class="home-description">
+                        <p>Nom: {{ sweatshirt.name }}</p>
+                        <p>Prix: {{ sweatshirt.price }} €</p>
                     </div>
-                {% endif %}
-            </div>
-        </div>
-
-        <div class="highlight">
-            <img class="home-img" src={{asset('images/tricolor.jpeg')}}>
-            <div class="pdts-content">
-                <div class="pdts-description">
-                    <p>Nom: Pokeball</p>
-                    <p>Prix: 45 €</p>
+                    {% if app.user %}
+                        <div class="home-btn-container">
+                            <button class="home-btn" onclick="window.location.href='{{ path('app_product', { 'id': sweatshirt.id }) }}'">VOIR</button>
+                        </div>
+                    {% endif %}
                 </div>
-                {% if app.user %}
-                    <div class="pdts-btn-container">
-                        <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
-                    </div>
-                {% endif %}
             </div>
-        </div>
-
-        <div class="highlight">
-            <img class="home-img" src={{asset('images/us.jpeg')}}>
-            <div class="pdts-content">
-                <div class="pdts-description">
-                    <p>Nom: BornInUsa</p>
-                    <p>Prix: 59,90 €</p>
-                </div>
-                {% if app.user %}
-                    <div class="pdts-btn-container">
-                        <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
-                    </div>
-                {% endif %}
-            </div>
-        </div>
+        {% endfor %}
     </section>
 {% endblock %}

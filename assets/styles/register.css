@@ -20,15 +20,10 @@
     margin-bottom: 5px;
 }
 
-.register-form label {
-        margin-bottom: 10px;
-        width: 100%;
-}
-
 .register-form .btn {
     align-self: flex-start;
-    background-color:dodgerblue ;
-    border-color: dodgerblue;
+    background-color:#65bcfc;
+    border-color: #65bcfc;
     border-radius: 5px;
     color: white;
     font-size: 18px;

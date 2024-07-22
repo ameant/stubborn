@@ -29,7 +29,6 @@
         <label for="inputPassword">Mot de passe :</label>
         <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
-
         <input type="hidden" name="_csrf_token"
             value="{{ csrf_token('authenticate') }}"
         >
@@ -38,7 +37,7 @@
             Se connecter
         </button> 
         <div>
-        <a href="="{{ path('app_forgot_password_request')}}">Mot de passe oublié</a>
+        <a href="{{ path('app_forgot_password_request')}}">Mot de passe oublié</a>
         <hr color="D3D3D3" width="300px"/>
         </div> <br>
         <div class="mb-3 text">Pas encore inscrit ? <br>

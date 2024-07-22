@@ -6,27 +6,47 @@ security:
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
         # used to reload user from session & other features (e.g. switch_user)
-        app_user_provider:
+        user_provider:
             entity:
                 class: App\Entity\User
-                property: email
+                property: name
+        admin_provider:
+            entity:
+                class: App\Entity\Admin
+                property: name
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+
         main:
             lazy: true
-            provider: app_user_provider
+            provider: user_provider
             custom_authenticator: App\Security\AuthAuthenticator
-
             form_login:
                 login_path: app_login
                 check_path: app_login
-
+                username_parameter: name
+                password_parameter: password
             logout:
                 path: app_logout
                 target: app_home
-
+            entry_point: App\Security\AuthAuthenticator
+            
+        admin:
+            pattern: ^/admin
+            lazy: true
+            provider: admin_provider
+            custom_authenticator: App\Security\AuthAuthenticator
+            form_login:
+                login_path: app_login
+                check_path: app_login
+                username_parameter: name
+                password_parameter: password
+            logout:
+                path: app_logout
+                target: app_home
             entry_point: App\Security\AuthAuthenticator
 
             # activate different ways to authenticate
@@ -40,6 +60,7 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
 when@test:
     security:

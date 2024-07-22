@@ -13,7 +13,32 @@
 
 .highlight {
     border: 1px solid black;
-    padding: 30px;
+    padding: 30px 60px;
+}
+
+.home-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.home-description {
+    align-self: flex-start;
+}
+
+.home-btn-container {
+    align-self: flex-end;
+    justify-self: center;
+    margin-bottom: 25px;
+}
+
+.home-btn { 
+    padding: 5px 25px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 12px;
+    cursor: pointer;
 }
 
 .home-img {

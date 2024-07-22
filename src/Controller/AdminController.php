@@ -19,18 +19,18 @@ class AdminController extends AbstractController
         ]);
     }
 
-    public function admin (ManagerRegistry $manager) :Response
-    {
+    // public function admin (ManagerRegistry $manager) :Response
+    // {
 
-        if(!$this->isGranted('ROLE_ADMIN')){
-            return $this->redirectToRoute('app_login');
-        }
+    //     if(!$this->isGranted('ROLE_ADMIN')){
+    //         return $this->redirectToRoute('app_login');
+    //     }
 
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
-        $categories = $manager->getRepository(Categery::class)->findAll();
+    //     $this->denyAccessUnlessGranted('ROLE_ADMIN');
+    //     $categories = $manager->getRepository(Categery::class)->findAll();
 
-        return $this->render('admin.html.twig', [
-            'categories' => $categories
-        ]);
-    }
+    //     return $this->render('admin.html.twig', [
+    //         'categories' => $categories
+    //     ]);
+    // }
 }

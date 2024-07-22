@@ -26,6 +26,7 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Veuillez entrer un nom d\'utilisateur',
                     ]),
                 ],
+                'label' => "Nom d'utilisateur :",
             ])
             ->add('email', EmailType::class, [
                 'constraints' => [
@@ -36,6 +37,7 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Veuillez entrer une adresse email valide',
                     ]),
                 ],
+                'label' => "Adresse mail :",
             ])
             ->add('deliveryAddress', TextType::class, [
                 'constraints' => [
@@ -43,6 +45,7 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Veuillez entrer une adresse de livraison',
                     ]),
                 ],
+                'label' => "Adresse de livraison",
             ])
             ->add('password', PasswordType::class, [
                 // instead of being set onto the object directly,

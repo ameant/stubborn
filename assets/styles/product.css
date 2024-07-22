@@ -1,0 +1,50 @@
+.pdt-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pdt { 
+    border: 1px solid black;
+    margin: 40px 60px;
+    padding: 30px 0px;
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.pdt-img {
+    border: 1px solid #ccc;
+}
+
+.pdt-btn { 
+    padding: 5px 15px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.size-button {
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+}

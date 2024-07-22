@@ -6,8 +6,54 @@
 {% endblock %}
 
 {% block body %}
+    <section class="pdt-section">
+    <div class="pdt">
+        {% set imageMap = {
+            1: 'black.jpeg',
+            2: 'darkblue.jpeg',
+            3: 'orange.jpeg',
+            4: 'tricolor.jpeg',
+            5: 'pink.jpeg',
+            6: 'white.jpeg',
+            7: 'grey.jpeg',
+            8: 'blue.jpeg',
+            9: 'us.jpeg',
+            10: 'green.jpeg'
+        } %}
+        {% set image = imageMap[sweatshirt.id] %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-</div>
+        <img class="pdt-img" src="{{ asset('images/' ~ image) }}" alt="{{ sweatshirt.name }}">
+        <div class="pdt-content">
+            <p>Nom: {{ sweatshirt.name }}</p>
+            <p>Prix: {{ sweatshirt.price }} €</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Taille</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><button class="size-button">XS</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="size-button">S</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="size-button">M</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="size-button">L</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="size-button">XL</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <form method="post" action="{{ path('app_product', { 'id': sweatshirt.id }) }}">
+                <button class="pdt-btn" type="submit">AJOUTER AU PANIER</button>
+            </form>
+        </div>
+    </div>
+    </section>
 {% endblock %}

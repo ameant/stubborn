@@ -7,134 +7,33 @@
 
 {% block body %}
     <section class="pdts-section">
+        {% for sweatshirt in sweatshirts %}
         <div class="pdts">
-            <img class="pdts-img" src={{asset('images/black.jpeg')}}>
-            <div class="pdts-content">
-                <div class="pdts-description">
-                    <p>Nom: Blackbelt</p>
-                    <p>Prix: 29,90 €</p>
-                </div>
-                <div class="pdts-btn-container">
-                    <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
-                </div>
-            </div>
-        </div>
+            {% set imageMap = {
+                1: 'black.jpeg',
+                2: 'darkblue.jpeg',
+                3: 'orange.jpeg',
+                4: 'tricolor.jpeg',
+                5: 'pink.jpeg',
+                6: 'white.jpeg',
+                7: 'grey.jpeg',
+                8: 'blue.jpeg',
+                9: 'us.jpeg',
+                10: 'green.jpeg'
+            } %}
+            {% set image = imageMap[sweatshirt.id] %}
 
-        <div class="pdts">
-            <img class="pdts-img" src={{asset('images/darkblue.jpeg')}}>
+            <img class="pdts-img" src="{{ asset('images/' ~ image) }}" alt="{{ sweatshirt.name }}">
             <div class="pdts-content">
                 <div class="pdts-description">
-                    <p>Nom: BlueBelt</p>
-                    <p>Prix: 29,90 €</p>
+                    <p>Nom: {{ sweatshirt.name }}</p>
+                    <p>Prix: {{ sweatshirt.price }} €</p>
                 </div>
                 <div class="pdts-btn-container">
-                    <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
+                    <button class="pdts-btn" onclick="window.location.href='{{ path('app_product', { 'id': sweatshirt.id }) }}'">VOIR</button>
                 </div>
             </div>
         </div>
-
-        <div class="pdts">
-            <img class="pdts-img" src={{asset('images/orange.jpeg')}}>
-            <div class="pdts-content">
-                <div class="pdts-description">
-                    <p>Nom: Street</p>
-                    <p>Prix: 34,50 €</p>
-                </div>
-                <div class="pdts-btn-container">
-                    <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="pdts">
-            <img class="pdts-img" src={{asset('images/tricolor.jpeg')}}>
-            <div class="pdts-content">
-                <div class="pdts-description">
-                    <p>Nom: Pokeball</p>
-                    <p>Prix: 45 €</p>
-                </div>
-                <div class="pdts-btn-container">
-                    <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="pdts">
-            <img class="pdts-img" src={{asset('images/pink.jpeg')}}>
-            <div class="pdts-content">
-                <div class="pdts-description">
-                    <p>Nom: PinkLady</p>
-                    <p>Prix: 29,90 €</p>
-                </div>
-                <div class="pdts-btn-container">
-                    <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="pdts">
-            <img class="pdts-img" src={{asset('images/white.jpeg')}}>
-            <div class="pdts-content">
-                <div class="pdts-description">
-                    <p>Nom: Snow</p>
-                    <p>Prix: 32 €</p>
-                </div>
-                <div class="pdts-btn-container">
-                    <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="pdts">
-            <img class="pdts-img" src={{asset('images/grey.jpeg')}}>
-            <div class="pdts-content">
-                <div class="pdts-description">
-                    <p>Nom: Greyback</p>
-                    <p>Prix: 28,50 €</p>
-                </div>
-                <div class="pdts-btn-container">
-                    <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="pdts">
-            <img class="pdts-img" src={{asset('images/blue.jpeg')}}>
-            <div class="pdts-content">
-                <div class="pdts-description">
-                    <p>Nom: BlueCloud</p>
-                    <p>Prix: 45 €</p>
-                </div>
-                <div class="pdts-btn-container">
-                    <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="pdts">
-            <img class="pdts-img" src={{asset('images/us.jpeg')}}>
-            <div class="pdts-content">
-                <div class="pdts-description">
-                    <p>Nom: BornInUsa</p>
-                    <p>Prix: 59,90€</p>
-                </div>
-                <div class="pdts-btn-container">
-                    <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="pdts">
-            <img class="pdts-img" src={{asset('images/green.jpeg')}}>
-            <div class="pdts-content">
-                <div class="pdts-description">
-                    <p>Nom: GreenSchool</p>
-                    <p>Prix: 42,20 €</p>
-                </div>
-                <div class="pdts-btn-container">
-                    <button class="pdts-btn" onclick="window.location.href='{{ path('app_product') }}'">VOIR</button>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </section>
 {% endblock %}

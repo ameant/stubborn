@@ -1,0 +1,3 @@
+# translations/security.fr.yaml
+security:
+    Invalid credentials. : "Identifiants incorrects."
