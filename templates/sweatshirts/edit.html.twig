@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification{% endblock %}
+
+{% block body %}
+    {{ include('sweatshirts/_form.html.twig', {'button_label': 'MODIFIER'}) }}
+
+    <a href="{{ path('app_sweatshirts_index') }}">Retour à la liste</a>
+{% endblock %}

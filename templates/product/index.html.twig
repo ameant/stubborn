@@ -26,30 +26,6 @@
         <div class="pdt-content">
             <p>Nom: {{ sweatshirt.name }}</p>
             <p>Prix: {{ sweatshirt.price }} €</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Taille</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><button class="size-button">XS</button></td>
-                    </tr>
-                    <tr>
-                        <td><button class="size-button">S</button></td>
-                    </tr>
-                    <tr>
-                        <td><button class="size-button">M</button></td>
-                    </tr>
-                    <tr>
-                        <td><button class="size-button">L</button></td>
-                    </tr>
-                    <tr>
-                        <td><button class="size-button">XL</button></td>
-                    </tr>
-                </tbody>
-            </table>
             <form method="post" action="{{ path('app_product', { 'id': sweatshirt.id }) }}">
                 <button class="pdt-btn" type="submit">AJOUTER AU PANIER</button>
             </form>

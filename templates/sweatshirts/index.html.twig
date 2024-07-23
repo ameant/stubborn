@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Back-office{% endblock %}
+
+{% block body %}
+ <div class="admin-section">
+        <section class="add">
+            <button class="btn" onclick="window.location.href='{{ path('app_sweatshirts_new') }}'">AJOUTER</button>
+        </section>
+    {% for sweatshirt in sweatshirts %}
+        <section class="editanddelete">
+            <div class="form-group">
+                {% set imageMap = {
+                    1: 'black.jpeg',
+                    2: 'darkblue.jpeg',
+                    3: 'orange.jpeg',
+                    4: 'tricolor.jpeg',
+                    5: 'pink.jpeg',
+                    6: 'white.jpeg',
+                    7: 'grey.jpeg',
+                    8: 'blue.jpeg',
+                    9: 'us.jpeg',
+                    10: 'green.jpeg',
+                    56: 'us.jpeg'
+                } %}
+                {% set image = imageMap[sweatshirt.id] %}
+
+                <img class="admin-img" src="{{ asset('images/' ~ image) }}" alt="{{ sweatshirt.name }}">
+            </div>
+            <div class="form-group">
+                <p>Nom</p>
+                <p>{{ sweatshirt.name }}</p>
+            </div>
+            <div class="form-group">
+                <p>Prix</p>
+                <p>{{ sweatshirt.price }}</p>
+            </div>
+            <div class="form-group">
+                <p>Stock XS</p>
+                <p>{{ sweatshirt.stockXS }}</p>
+            </div>
+            <div class="form-group">
+                <p>Stock S</p>
+                <p>{{ sweatshirt.stockS }}</p>
+            </div>
+            <div class="form-group">
+                <p>Stock M</p>
+                <p>{{ sweatshirt.stockM }}</p>
+            </div>
+            <div class="form-group">
+                <p>Stock L</p>
+                <p>{{ sweatshirt.stockL }}</p>
+            </div>
+            <div class="form-group">
+                <p>Stock XL</p>
+                <p>{{ sweatshirt.stockXL }}</p>
+            </div>
+            <div class="admin-btns"> 
+                <button class="btn" onclick="window.location.href='{{ path('app_sweatshirts_delete', {'id': sweatshirt.id}) }}'">SUPPRIMER</button>
+                <button class="btn" onclick="window.location.href='{{ path('app_sweatshirts_edit', {'id': sweatshirt.id}) }}'">MODIFIER</button>
+            </div>
+        </section>
+        {% else %}
+            <p colspan="10">Rien n'a été trouvé</p>
+        {% endfor %}
+    </div>
+{% endblock %}

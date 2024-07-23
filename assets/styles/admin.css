@@ -1,0 +1,46 @@
+.admin-section {
+    margin: 20px;
+}
+
+.form-add, .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+}
+
+.add, .editanddelete {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    margin-bottom: 20px;
+    padding: 20px 50px;
+}
+
+.add {
+    background-color: #f8cecc;
+}
+
+.admin-img {
+    height: 100px;
+}
+
+.add-btn, .admin-btns {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.btn, .admin-btn {
+    padding: 7px 40px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.editanddelete .admin-btns {
+    display: flex;
+    width: 100%;
+}

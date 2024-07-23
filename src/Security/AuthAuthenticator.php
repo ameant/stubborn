@@ -19,6 +19,7 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordC
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AuthAuthenticator extends AbstractLoginFormAuthenticator
 {
@@ -28,40 +29,45 @@ class AuthAuthenticator extends AbstractLoginFormAuthenticator
 
     private UrlGeneratorInterface $urlGenerator;
     private EntityManagerInterface $entityManager;
+    private UserPasswordHasherInterface $passwordHasher;
 
-    public function __construct(UrlGeneratorInterface $urlGenerator, EntityManagerInterface $entityManager)
+    public function __construct(UrlGeneratorInterface $urlGenerator, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher)
     {
         $this->urlGenerator = $urlGenerator;
         $this->entityManager = $entityManager;
+        $this->passwordHasher = $passwordHasher;
     }
 
     public function authenticate(Request $request): Passport
     {
         $name = $request->request->get('name', '');
+        $password = $request->request->get('password', '');
 
         $request->getSession()->set(Security::LAST_USERNAME, $name);
 
         return new Passport(
-            new UserBadge($name, function ($userIdentifier) {
-                error_log("Trying to authenticate user: " . $userIdentifier);
-
+            new UserBadge($name, function ($userIdentifier) use ($password) {
                 $user = $this->entityManager->getRepository(User::class)->findOneBy(['name' => $userIdentifier]);
-                if (!$user) {
-                    $user = $this->entityManager->getRepository(Admin::class)->findOneBy(['name' => $userIdentifier]);
-                }
-
                 if ($user) {
-                    error_log("User found: " . $userIdentifier);
+                    // Vérifier le mot de passe pour l'utilisateur
+                    if (!$this->passwordHasher->isPasswordValid($user, $password)) {
+                        throw new AuthenticationException('Identifiants incorrects.');
+                    }
+                    return $user; // Retourner l'utilisateur trouvé
                 } else {
-                    error_log("User not found: " . $userIdentifier);
+                    $admin = $this->entityManager->getRepository(Admin::class)->findOneBy(['name' => $userIdentifier]);
+                    if ($admin) {
+                        // Vérifier le mot de passe pour l'admin
+                        if (!$this->passwordHasher->isPasswordValid($admin, $password)) {
+                            throw new AuthenticationException('Identifiants incorrects.');
+                        }
+                        return $admin; // Retourner l'admin trouvé
+                    } else {
+                        throw new AuthenticationException('Utilisateur non trouvé.');
+                    }
                 }
-
-                if (!$user) {
-                    throw new AuthenticationException('User not found.');
-                }
-                return $user;
             }),
-            new PasswordCredentials($request->request->get('password', '')),
+            new PasswordCredentials($password),
             [
                 new CsrfTokenBadge('authenticate', $request->request->get('_csrf_token')),
             ]

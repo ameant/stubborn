@@ -5,12 +5,8 @@ namespace App\Repository;
 use App\Entity\Admin;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 
-/**
- * @extends ServiceEntityRepository<Admin>
+/** * @extends ServiceEntityRepository<Admin>
  *
  * @method Admin|null find($id, $lockMode = null, $lockVersion = null)
  * @method Admin|null findOneBy(array $criteria, array $orderBy = null)

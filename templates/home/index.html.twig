@@ -8,6 +8,11 @@
 {% endblock %}
 
 {% block body %}
+{% for message in app.flashes('cancel') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+{% endfor %}
     <section class="home">
         {% for sweatshirt in highlightedSweatshirts %}
             {% set imageMap = {

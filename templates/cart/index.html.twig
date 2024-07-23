@@ -32,7 +32,7 @@
                     <p>Nom : {{ item.name }}</p>
                     <p>Prix : {{ item.price }} €</p>
                     <form method="post" action="{{ path('app_remove_from_cart', { 'id': id }) }}" style="display:inline;">
-                        <button type="submit">RETIRER DU PANIER</button>
+                        <button class="btn" type="submit">RETIRER DU PANIER</button>
                     </form>
                 </div>
                 {% set totalPrice = totalPrice + item.price %}
