@@ -16,3 +16,7 @@ Cloner le projet depuis GitHub :
 Lien du projet en local :
 - cd stubborn
 - symfony serve
+
+Accèes fixtures base de données : fichier stubborn.sql
+- id db : root
+- mdp vide
